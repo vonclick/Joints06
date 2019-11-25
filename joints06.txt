@@ -1,0 +1,33 @@
+1) SELECT name, COUNT(*) AS nb_player  FROM player   JOIN team  ON team.id = player.team_id   GROUP BY team_id   ORDER BY nb_player DESC;
++------------+-----------+
+| name       | nb_player |
++------------+-----------+
+| Gryffindor |        36 |
+| Slytherin  |        21 |
+| Ravenclaw  |        15 |
+| Hufflepuff |        12 |
++------------+-----------+
+
+2) SELECT name  FROM player   JOIN team  ON team.id = player.team_id   GROUP BY team_id   HAVING  COUNT(*)  >= 14 ORDER BY name ASC;
++------------+
+| name       |
++------------+
+| Gryffindor |
+| Ravenclaw  |
+| Slytherin  |
++------------+
+
+3) SELECT firstname, lastname  FROM wizard   JOIN player ON wizard.id = player.wizard_id   JOIN team ON team.id = player.team_id  
+WHERE name='Gryffindor' AND DATE_FORMAT(enrollment_date, "%W")='Monday'  ORDER BY enrollment_date  ASC;
++-----------+------------+
+| firstname | lastname   |
++-----------+------------+
+| George    | Weasley    |
+| Alice     | Longbottom |
+| Cadogan   |            |
+| Godric    | Gryffindor |
+| Sirius    | Black      |
+| Aberforth | Dumbledore |
+| Augusta   | Longbottom |
++-----------+------------+
+
